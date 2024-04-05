@@ -86,6 +86,13 @@ bool move_blocks(string square[][BOARD_SIZE], const char* color, const string& d
     
     return true;
 }
+
+// Function to clear the terminal screen
+void clearScreen()
+{
+    cout << "\033[2J\033[1;1H";  // ANSI escape sequence to clear the screen and move the cursor to the top-left position
+}
+
 int main() {
     // Create a 6 by 6 array
     string square[BOARD_SIZE][BOARD_SIZE];
@@ -114,6 +121,8 @@ int main() {
         if (color == "red" && (direction == "r" || direction == "l") && distance >= 1) {
             if (move_blocks(square, "🟥", direction, distance)) {
                 cout << endl;
+                //clear the screen
+                clearScreen();
                 // Print the updated map
                 print_map(square);
             } else {
